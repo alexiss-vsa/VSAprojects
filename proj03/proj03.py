@@ -12,10 +12,14 @@ low = 'Your number was too low, try again.'
 guesses = int(3)
 import random
 rnum = random.randint(1,9)
-#print rnum
+print rnum
+
+
 unum = int(raw_input('Pick a number '))
 if unum == rnum:
     print congrats
+    guesses = guesses - 3
+
 elif unum < rnum:
     print low
     guesses = guesses - 1
@@ -23,6 +27,7 @@ elif unum < rnum:
     print 'you have'
     print  guesses
     print 'guesses left'
+
 elif rnum < unum:
     print high
     guesses = guesses -1
@@ -31,43 +36,45 @@ elif rnum < unum:
     print  guesses
     print 'guesses left'
 
-unum = int(raw_input('Pick a number '))
-if unum == rnum:
-    print congrats
-elif unum < rnum:
-    print low
-    guesses = guesses - 1
-    print ' '
-    print 'you have'
-    print  guesses
-    print 'guesses left'
-elif rnum < unum:
-    print high
-    guesses = guesses -1
-    print ' '
-    print 'you have'
-    print  guesses
-    print 'guesses left'
 
-unum = int(raw_input('Pick a number '))
-if unum == rnum:
-    print congrats
-elif unum < rnum:
-    print low
-    guesses = guesses - 1
-    print ' '
-    print 'you have'
-    print  guesses
-    print 'guesses left'
-elif rnum < unum:
-    print high
-    guesses = guesses -1
-    print ' '
-    print 'you have'
-    print  guesses
-    print 'guesses left'
+#2
+    unum = int(raw_input('Pick a number '))
+    if unum == rnum and guesses>0:
+        print congrats
+    elif unum < rnum:
+        print low
+        guesses = guesses - 1
+        print ' '
+        print 'you have'
+        print  guesses
+        print 'guesses left'
+    elif rnum < unum:
+        print high
+        guesses = guesses -1
+        print ' '
+        print 'you have'
+        print  guesses
+        print 'guesses left'
 
-if guesses == 0:
-    print 'You have no guesses left'
+#3
+while guesses>0:
+    unum = int(raw_input('Pick a number '))
+    if unum == rnum and guesses>0:
+        print congrats
+    elif unum < rnum:
+        print low
+        guesses = guesses - 1
+        print ' '
+        print 'you have'
+        print  guesses
+        print 'guesses left'
+    elif rnum < unum:
+        print high
+        guesses = guesses -1
+        print ' '
+        print 'you have'
+        print  guesses
+        print 'guesses left'
+
 
     #still a wip, need game to end if they win
