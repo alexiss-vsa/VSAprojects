@@ -1,86 +1,120 @@
-# Name:
-# Date:
-
-# proj05: functions and lists
-
-# Part I
-
+# # proj05: functions and lists
+#
+# # Part I
+#
 def divisors(num):
-    """
-    Takes a number and returns all divisors of the number, ordered least to greatest
-    :param num: int
-    :return: list (int)
-    """
-    return 0
+
+#        Takes a number and returns all divisors of the number, ordered least to greatest
+#     :param num: int
+#    :return: list (int)
+
+    ans_list = []
+    for n in range(1,num+1):
+        #print "num =", num, "n =", n
+        if num % n == 0:
+            #print "is divisor"
+            ans_list.append(n)
+            #print ans_list , 'is ans list'
+    return ans_list
+
 
 def prime(num):
-    """
-    Takes a number and returns True if the number is prime, otherwise False
-    :param num: int
-    :return: bool
-    """
-    return False
+#     """
+#   #  Takes a number and returns True if the number is prime, otherwise False
+#     :param num: int
+#     :return: bool
 
-# Part II
+    divisors_list = divisors(num)
+    if len(divisors_list)>2:
+        return False
+    else:
+        return True
+#
+# # Part II
+#
+
+newlist = []
 
 def intersection(lst1, lst2):
-    """
-    Takes two lists and returns a list of the elements in common between the lists
-    :param lst1: list, any type
-    :param lst2: list, any type
-    :return: list, any type
-    """
-    return ["test"]
+    newlist = []
+    #lst1 = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+    #lst2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+    for number in lst1:
+        if number in lst2 and number not in newlist:
+            newlist.append(number)
+    return newlist
 
-# Part III
+
+# # Part III
 
 def find_ab(side1, side2, side3):
+    if side1>side2 and side1>side3:
+        return side2 , side3
+    if side2>side1 and side2>side3:
+        return side1 , side3
+    if side3>side1 and side3>side2:
+        return side1 , side2
+
     """
-    Takes three side lengths an returns two smallest in a list
-    :param side1: int or float
-    :param side2: int or float
-    :param side3: int or float
-    :return: list of 2 ints or floats
     """
     return [0, 0]
 
 def find_c(side1, side2, side3):
+    if side1>side2 and side1>side3:
+        return side1
+    if side2>side1 and side2>side3:
+        return side2
+    if side3>side1 and side3>side2:
+        return side3
+
     """
-    Takes three side lengths an returns the largest
-    :param side1: int or float
-    :param side2: int or float
-    :param side3: int or float
-    :return: int or float
     """
     return 0
 
-def square(side):
-    """
-    Takes a side length and returns the side length squared
-    :param side: int or float
-    :return: int or float
-    """
-    return 0
+def square(side1, side2, side3):
+    return side1**2 , side2**2 , side3**2
+
+#     """
+#  Takes a side length and returns the side length squared
+#  :param side: int or float
+# :return: int or float
+#     """
 
 def pythagorean(a,b,c):
-    """
-    Takes three side lengths and returns true if a^2 + b^2 = c^2, otherwise false
-    :param a: int or float
-    :param b: int or float
-    :param c: int or float
-    :return: bool
-    """
-    return False
+
+    if a**2 + b**2 == c**2:
+        print "is a right triangle"
+        return True
+    else:
+        print "is not a right triangle"
+        return False
+
+pythagorean(3,4,5)
+
+
+
+    # """
+    # Takes three side lengths and returns true if a^2 + b^2 = c^2, otherwise false
+    # :param a: int or float
+    # :param b: int or float
+    # :param c: int or float
+    # :return: bool
+    # """
+    #return False
 
 def is_right(side1, side2, side3):
-    """
-    Takes three side lengths and returns true if triangle is right
-    :param side1: int or float
-    :param side2: int or float
-    :param side3: int or float
-    :return: bool
-    """
-    return False
+   
+
+
+
+    # Takes three side lengths and returns true if triangle is right
+    # :param side1: int or float
+    # :param side2: int or float
+    # :param side3: int or float
+    # :return: bool
+
+
+
 
 # TESTS
 # Feel free to add your own tests as needed!
@@ -166,3 +200,4 @@ if is_right(9, 3, 4):
     print("Test 12: FAIL")
 else:
     print("Test 12: PASS")
+
