@@ -52,7 +52,7 @@ alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 def hangman():
     word = choose_word(wordlist)
-#    print word , 'is the word'
+    #print word , 'is the word'
     return word
 
 word = hangman()
@@ -62,12 +62,16 @@ print "The word is" , word_length , "letters long."
 
 guesses=int(6)
 
+list = ["_ "] * word_length
+print list
+
+
 while guesses>0:
     print 'Your available letters: ' , alphabet
     lettr = raw_input("Enter a letter: ")
+    print ' '
 
-    list = ["_ "] * word_length
-    print list
+    lettr = lettr.lower()
 
 
     wordlst = []
@@ -77,17 +81,22 @@ while guesses>0:
 
     for letter in lettr:
         if letter in wordlst:
-            for num in range(len(list)):
-                if lettr == wordlst[num]:
-                    list[num] = lettr
+                for num in range(len(list)):
+                    if lettr == wordlst[num]:
+                        list[num] = lettr
+                print list
 
-            alphabet = alphabet.replace(lettr, "/")
-            print "you got a letter right"
+                alphabet = alphabet.replace(lettr, "/")
+                print "You got a letter right!"
         else:
-            print "nope"
+            print "Nope, try again!"
             alphabet = alphabet.replace(lettr, "/")
             guesses = guesses - 1
             print "You have", guesses, "guesses left."
+    if list == wordlst:
+        print "Yay, you win!"
+        break
 
 if guesses == 0:
     print 'You lose! The word was' , word
+
