@@ -12,7 +12,7 @@ low = 'Your number was too low, try again.'
 guesses = int(3)
 import random
 rnum = random.randint(1,9)
-print rnum
+#print rnum
 
 
 unum = int(raw_input('Pick a number '))
@@ -76,5 +76,3 @@ while guesses>0:
         print  guesses
         print 'guesses left'
 
-
-    #still a wip, need game to end if they win
