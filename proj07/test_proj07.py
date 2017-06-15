@@ -1,4 +1,4 @@
-from proj07 import *
+zfrom proj07 import *
 
 #
 # Test code

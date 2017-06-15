@@ -13,7 +13,7 @@ WORDLIST_FILENAME = "words.txt"
 def load_words():
     """
     Returns a list of valid words. Words are strings of lowercase letters.
-    
+
     Depending on the size of the word list, this function may
     take a while to finish.
     """
@@ -38,7 +38,7 @@ def choose_word(wordlist):
 # end of helper code
 # -----------------------------------
 
-# actually load the dictionary of words and point to it with 
+# actually load the dictionary of words and point to it with
 # the wordlist variable so that it can be accessed from anywhere
 # in the program
 wordlist = load_words()
@@ -73,7 +73,6 @@ while guesses>0:
 
     lettr = lettr.lower()
 
-
     wordlst = []
     for letter in word:
         wordlst.append(letter)
@@ -94,9 +93,8 @@ while guesses>0:
             guesses = guesses - 1
             print "You have", guesses, "guesses left."
     if list == wordlst:
-        print "Yay, you win!"
+        print "Yay, you win! The word was" , word
         break
 
 if guesses == 0:
     print 'You lose! The word was' , word
-

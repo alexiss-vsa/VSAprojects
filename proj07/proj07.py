@@ -18,7 +18,7 @@ SCRABBLE_LETTER_VALUES = {
 
 # -----------------------------------
 # Helper code
-# (you don't need to understand this helper code)
+# (you don't need to understand or change this helper code)
 
 WORDLIST_FILENAME = "words.txt"
 
@@ -77,11 +77,23 @@ def get_word_score(word, n):
     returns: int >= 0
     """
     # TO DO...
-    
+    wordl = []
+    total = 0
+    for letter in word:
+        wordl.append(letter)
+        value = SCRABBLE_LETTER_VALUES.get(letter,"0")
+        total = int(total) + value
+    l = len(wordl)
+    total = total * l
+    if l == n:
+        total = total + 50
+    return total
+
+
 #
 # Make sure you understand how this function works and what it does!
 #
-def display_hand(hand):
+def display_hand(hand): #dont change
     """
     Displays the letters currently in the hand.
 
@@ -146,7 +158,11 @@ def update_hand(hand, word):
     returns: dictionary (string -> int)
     """
     # TO DO ...
+    hand = deal_hand(HAND_SIZE)
 
+    for letter in word:
+        hand[letter] -1
+    return hand
 #
 # Problem #3: Test word validity
 #
@@ -225,6 +241,14 @@ def play_game(word_list):
 #
 # Build data structures used for entire session and play game
 #
-if __name__ == '__main__':
-    word_list = load_words()
-    play_game(word_list)
+
+word = raw_input("Enter a word ")
+hand = update_hand(word, hand)
+print hand
+
+#value = get_word_score(word,HAND_SIZE)
+#print value
+
+#if __name__ == '__main__':
+#    word_list = load_words()
+#    play_game(word_list)
