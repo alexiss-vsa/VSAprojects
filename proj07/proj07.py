@@ -29,14 +29,14 @@ def load_words():
     Depending on the size of the word list, this function may
     take a while to finish.
     """
-    print "Loading word list from file..."
+    #print "Loading word list from file..."
     # inFile: file
     inFile = open(WORDLIST_FILENAME, 'r', 0)
     # wordlist: list of strings
     wordlist = []
     for line in inFile:
         wordlist.append(line.strip().lower())
-    print "  ", len(wordlist), "words loaded."
+    #print "  ", len(wordlist), "words loaded."
     return wordlist
 
 def get_frequency_dict(sequence):
@@ -158,15 +158,16 @@ def update_hand(hand, word):
     returns: dictionary (string -> int)
     """
     # TO DO ...
-    hand = deal_hand(HAND_SIZE)
+    new_hand = hand
 
     for letter in word:
-        hand[letter] -1
-    return hand
+        if letter in new_hand:
+            new_hand[letter] -= 1
+    return new_hand
 #
 # Problem #3: Test word validity
 #
-def is_valid_word(word, hand, word_list):
+def is_valid_word(word, new_hand, word_list):
     """
     Returns True if word is in the word_list and is entirely
     composed of letters in the hand. Otherwise, returns False.
@@ -176,7 +177,16 @@ def is_valid_word(word, hand, word_list):
     hand: dictionary (string -> int)
     word_list: list of lowercase strings
     """
-    # TO DO...
+    # TO DO... #this is messed up (wip)
+    ans = True
+    if word in word_list:
+        for letter in word:
+            if letter not in new_hand:
+                ans = False
+            else:
+                break
+    return ans
+
 
 def calculate_handlen(hand):
     handlen = 0
@@ -242,12 +252,22 @@ def play_game(word_list):
 # Build data structures used for entire session and play game
 #
 
+hand = deal_hand(HAND_SIZE)
+print 'Use the letters ' , display_hand(hand)
+True = 'Correct'
+False = 'Invalid Word'
+word_list= load_words()
 word = raw_input("Enter a word ")
-hand = update_hand(word, hand)
-print hand
+valid = is_valid_word(word, hand, word_list)
 
-#value = get_word_score(word,HAND_SIZE)
-#print value
+if valid == True:
+    new_hand = update_hand(hand, word)
+
+print valid
+print 'remaining letters: ' , display_hand(hand)
+
+value = get_word_score(word,HAND_SIZE)
+print 'You got' , value , 'points'
 
 #if __name__ == '__main__':
 #    word_list = load_words()
