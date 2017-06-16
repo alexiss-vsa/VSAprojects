@@ -167,7 +167,7 @@ def update_hand(hand, word):
 #
 # Problem #3: Test word validity
 #
-def is_valid_word(word, new_hand, word_list):
+def is_valid_word(word, hand, word_list):
     """
     Returns True if word is in the word_list and is entirely
     composed of letters in the hand. Otherwise, returns False.
@@ -177,15 +177,24 @@ def is_valid_word(word, new_hand, word_list):
     hand: dictionary (string -> int)
     word_list: list of lowercase strings
     """
-    # TO DO... #this is messed up (wip)
-    ans = True
+    # TO DO...
+
+    #valid = True
     if word in word_list:
+        new_hand2 = hand.copy()
+
         for letter in word:
-            if letter not in new_hand:
-                ans = False
+            if new_hand2.get(letter, 0) <= 0:
+                return False
+
             else:
-                break
-    return ans
+                new_hand2 = update_hand(new_hand2, letter)
+
+        return True
+
+    else:
+        print "Thats not a word"
+        return False
 
 
 def calculate_handlen(hand):
@@ -215,7 +224,7 @@ def play_hand(hand, word_list):
       the remaining letters in the hand are displayed, and the user
       is asked to input another word.
 
-    * The sum of the word scores is displayed when the hand finishes.
+    * The sum of the word scores is displayed when the hand finishes. #
 
     * The hand finishes when there are no more unused letters.
       The user can also finish playing the hand by inputing a single
@@ -226,6 +235,30 @@ def play_hand(hand, word_list):
       
     """
     # TO DO ...
+
+    print 'Use the letters ',
+    display_hand(hand)
+    #values = []
+    while calculate_handlen(hand) > 0:
+        word_list= load_words()
+        word = raw_input("Enter a word, or type . to end the hand ")
+        if word == '.':
+            print 'Your total score is ' ,
+            print 'Game over'
+
+            break
+        valid = is_valid_word(word, hand, word_list)
+        print valid
+        if valid == True:
+            new_hand = update_hand(hand, word)
+            value = get_word_score(word, HAND_SIZE)
+            #values.append(value)
+            print 'You got', value, 'points'
+
+
+        print 'remaining letters: ' ,
+        display_hand(hand)
+
 
 #
 # Problem #5: Playing a game
@@ -253,21 +286,9 @@ def play_game(word_list):
 #
 
 hand = deal_hand(HAND_SIZE)
-print 'Use the letters ' , display_hand(hand)
-True = 'Correct'
-False = 'Invalid Word'
-word_list= load_words()
-word = raw_input("Enter a word ")
-valid = is_valid_word(word, hand, word_list)
 
-if valid == True:
-    new_hand = update_hand(hand, word)
-
-print valid
-print 'remaining letters: ' , display_hand(hand)
-
-value = get_word_score(word,HAND_SIZE)
-print 'You got' , value , 'points'
+word_list = load_words()
+game = play_hand(hand, word_list)
 
 #if __name__ == '__main__':
 #    word_list = load_words()
