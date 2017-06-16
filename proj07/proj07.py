@@ -238,12 +238,15 @@ def play_hand(hand, word_list):
 
     print 'Use the letters ',
     display_hand(hand)
-    #values = []
+    values = []
+    sumv = 0
     while calculate_handlen(hand) > 0:
         word_list= load_words()
         word = raw_input("Enter a word, or type . to end the hand ")
         if word == '.':
-            print 'Your total score is ' ,
+            for item in values:
+                sumv = sumv + item
+            print 'Your total score is ' , sumv
             print 'Game over'
 
             break
@@ -252,7 +255,7 @@ def play_hand(hand, word_list):
         if valid == True:
             new_hand = update_hand(hand, word)
             value = get_word_score(word, HAND_SIZE)
-            #values.append(value)
+            values.append(value)
             print 'You got', value, 'points'
 
 
