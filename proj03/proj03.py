@@ -32,9 +32,9 @@ elif rnum < unum:
     print high
     guesses = guesses -1
     print ' '
-    print 'you have'
-    print  guesses
-    print 'guesses left'
+    print 'you have' , guesses , 'guesses left'
+    #print  guesses
+    #print 'guesses left'
 
 
 #2
@@ -45,9 +45,9 @@ elif rnum < unum:
         print low
         guesses = guesses - 1
         print ' '
-        print 'you have'
-        print  guesses
-        print 'guesses left'
+        print 'you have' , guesses , 'guesses left'
+        #print  guesses
+        #print 'guesses left'
     elif rnum < unum:
         print high
         guesses = guesses -1
@@ -65,14 +65,16 @@ while guesses>0:
         print low
         guesses = guesses - 1
         print ' '
-        print 'you have'
-        print  guesses
-        print 'guesses left'
+        print 'you have' , guesses , 'guesses left'
+        #print  guesses
+        #print 'guesses left'
     elif rnum < unum:
         print high
         guesses = guesses -1
         print ' '
-        print 'you have'
-        print  guesses
-        print 'guesses left'
+        print 'you have' , guesses , 'guesses left'
+        #print  guesses
+        #print 'guesses left'
 
+if guesses == 0: 
+    print 'the number was' , rnum
